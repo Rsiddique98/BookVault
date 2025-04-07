@@ -1,0 +1,20 @@
+body {
+    background-color: #fefcf8;
+  }
+  
+  .text-beige {
+    color: #eed398 !important;
+  }
+  
+  .navbar {
+    background-color: rgba(42, 10, 70, 0.6); /* Dark purple transparent */
+    backdrop-filter: blur(10px);
+  }
+  
+  .navbar-brand span {
+    font-size: 1.5rem;
+  }
+  
+  .nav-link:hover {
+    color: #b08d5ef1 !important; /* Accent beige on hover */
+  }
