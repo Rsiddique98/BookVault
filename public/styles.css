@@ -1,20 +1,58 @@
 body {
     background-color: #fefcf8;
   }
+
+  /* Navbar styling */
   
   .text-beige {
     color: #eed398 !important;
   }
   
-  .navbar {
-    background-color: rgba(42, 10, 70, 0.6); /* Dark purple transparent */
-    backdrop-filter: blur(10px);
-  }
-  
-  .navbar-brand span {
-    font-size: 1.5rem;
+  .navbar-brand:hover {
+    transform: translateY(-3px) scale(1.1);
   }
   
   .nav-link:hover {
     color: #b08d5ef1 !important; /* Accent beige on hover */
+    transform: translateY(-5px);
   }
+
+  /* Shift nav links to the right on larger screens */
+@media (min-width: 992px) {
+    .nav-links {
+      margin-left: 28rem !important; /* Adjust this value to your liking */
+    }
+  }
+
+
+  .input-group i {
+    color: #2c103e;
+  }
+
+  .search-input {
+    color: #3d2352 !important;           /* Dark Purple */
+    border: 2px solid #ece0c6 !important; 
+    border-radius: 20px !important;
+    padding-left: 15px !important;   
+  }
+  
+  .search-input::placeholder {
+    color: #2c103e !important;         /* Slightly lighter purple */
+  }
+  
+  .search-btn {
+    background-color: #2c103e !important; /* Dark purple */
+    color: #ece0c6 !important;           /* Beige text */
+    border: none !important; 
+    border-radius: 20px !important; 
+    padding: 5px 15px  !important; 
+  }
+  
+  .search-btn:hover {
+    background-color: #5c3775  !important; 
+  }
+  
+  
+
+  
+ 
