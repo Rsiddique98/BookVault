@@ -11,18 +11,42 @@
  <%- include("header.ejs") %>    
 
  <!--Hero section-->
- <header class="hero d-flex align-items-center justify-content-between flex-wrap px-4 py-5">
-    <div class="hero-image col-md-5 text-center mb-4 mb-md-0">
+ <header class="hero d-flex align-items-center justify-content-lg-between justify-content-center flex-wrap px-4 py-5">
+    <div class="hero-image col-md-5 text-center mb-4">
         <img src="/images/animatedgirl.png" alt="Girl reading book" class="img-fluid rounded">
       </div>
 
-    <div class="hero-content col-md-6">
-      <h1>Looking for your next read?</h1>
-      <p>Hi, I'm Rida — a lifelong book lover who’s been hooked on reading since childhood. I created this little space on the internet to showcase my current reads, past favourites and a few thoughts along the way. Dive in and see what's on my shelf!</p>
+    <div class="hero-content col-md-6 d-flex flex-column align-items-md-center">
+      <h1 class="text-center">Looking for your next read?</h1>
+      <p class="text-center">Hi, I'm Rida — a lifelong book lover who’s been hooked on reading since childhood. I created this little space on the internet to showcase my current reads, past favourites and a few thoughts along the way. Dive in and see what's on my shelf!</p>
       <a href="#" id="view-btn" class="btn btn-gradient mt-3">View my library</a>
     </div>
     </header>
 
+    <div class="container">
+    <h2 class="text-center">My Library</h2>
+      <div class="row gx-5 justify-content-center">
+        <% books.forEach(book => { %>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <img 
+                src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-L.jpg" 
+                class="card-img-top" 
+                alt="Cover for <%= book.title %>"
+                onerror="this.onerror=null; this.src='/images/fallbackcover.png';"
+              >
+              <div class="card-body">
+                <h5 class="card-title"><%= book.title %></h5>
+                <p class="card-text"><em><%= book.author %></em></p>
+                <% if (book.review) { %>
+                  <p class="card-text"><%= book.review %></p>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    </div>
 
  <script src="script.js"></script>
 </body>

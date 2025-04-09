@@ -3,6 +3,12 @@ body {
   }
 
   /* Navbar styling */
+
+  
+  .navbar.scrolled {
+    background-color: #f6e8c8 !important;
+
+  }
   
   .text-beige {
     color: #2c103e !important;
@@ -26,7 +32,7 @@ body {
   }
 
   /* Shift nav links to the right on larger screens */
-@media (min-width: 992px) {
+@media (min-width: 1220px) {
     .nav-links {
       margin-left: 28rem !important; /* Adjust this value to your liking */
     }
@@ -65,13 +71,14 @@ body {
 
 .hero-image img {  /* Hero Image */
    margin-top: 150px;
-    margin-left: 30px;
     height: auto;
     }
 
-    .hero-content {
-    margin-right: 80px;
-    }
+   .hero-content {
+
+    margin-right: 50px;
+   }
+
 
     .hero-content h1 {
         font-size: 3rem;
@@ -89,6 +96,7 @@ body {
       /* Button styling */
 
       #view-btn {
+        
         background: #dacca2f1;
         padding: 0.75rem 1.5rem;
         font-weight: 500;
@@ -96,12 +104,21 @@ body {
         color: #2c103e;
         border: none;
         border-radius: 10px; 
+      
       }
+
 
       #view-btn:hover {
         transform: translateY(-2px) scale(1.1);
         box-shadow: 0 0 8px 2px #f5f5dc;
       }
-      
-      
+
+      /* Book database */
+
+   .container h2 {
+
+    margin-bottom: 50px;
+   }
+
+    
  

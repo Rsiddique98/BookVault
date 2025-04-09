@@ -27,8 +27,17 @@ app.use(express.static("public"));
 //Middleware to parse JSON requests
 app.use(express.json());
 
-app.get("/", (req, res) => {
-    res.render("index.ejs");
+//Route to fetch books from database
+
+app.get("/", async (req, res) => {
+  try {
+    const result = await db.query("SELECT * FROM books");
+    const books = result.rows;
+    res.render("index.ejs", { books });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching books");
+  }
 });
 
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
