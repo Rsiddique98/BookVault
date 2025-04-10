@@ -30,10 +30,25 @@ app.use(express.json());
 //Route to fetch books from database
 
 app.get("/", async (req, res) => {
+  const { sort } = req.query;
+  let query = "SELECT * FROM books";
+
+    
+  // Append sort logic
+  if (sort === "rating") {
+    query += " ORDER BY rating DESC";
+  } else if (sort === "recency") {
+    query += " ORDER BY created_at DESC";
+  } else if (sort === "currentlyReading") {
+    query += " WHERE status = 'currently reading'";
+  } else {
+    query += " ORDER BY id DESC"; // default sort
+  }
+
   try {
-    const result = await db.query("SELECT * FROM books");
+    const result = await db.query(query);
     const books = result.rows;
-    res.render("index.ejs", { books });
+    res.render("index.ejs", { books, sort });
   } catch (err) {
     console.error(err);
     res.status(500).send("Error fetching books");

@@ -118,7 +118,11 @@ body {
    .container h2 {
 
     margin-bottom: 50px;
+    color: #2c103e;
    }
 
+   .card-body h5 {
+    color: #2c103e;
+   }
     
  
