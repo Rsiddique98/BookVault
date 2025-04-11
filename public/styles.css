@@ -175,3 +175,30 @@ body {
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* optional: adds a little depth */
 }
+
+/* Review Page */
+
+.review-page .custom-navbar { 
+  background-color: #f6e8c8 !important; /* Added a custom class to only change navbar colour on review page */
+
+  }
+
+  #back-btn {
+
+  background-color: #dacca2f1;
+  font-weight: 500;
+        font-size: 1rem;
+        color: #2c103e;
+        border: none;
+        border-radius: 10px; 
+  }
+
+  #back-btn:hover {
+    transform: translateY(-2px) scale(1.1);
+    box-shadow: 0 0 8px 2px #f5f5dc;
+  }
+
+  .review-page .container {
+
+    margin-top: 70px;
+  }
