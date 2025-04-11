@@ -121,8 +121,57 @@ body {
     color: #2c103e;
    }
 
+   .card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    flex: 1;
+  }
+
    .card-body h5 {
     color: #2c103e;
    }
-    
+
+   .book-rating {
+
+    margin-bottom: 25px;
+   }
+
+   .star-filled {
+    color: #2c103e; /* colour of rating stars */
+  }
+  
+  .star-empty {
+    color: #ddd; /* soft gray for empty stars */
+  }
+
+
+   /* Review button styling */
+
+   #review-btn {
+
+    background-color: #dacca2f1;
+    color:#2c103e;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+
+}
+
+@media (min-width: 768px) {
+  #review-btn {
+    width: auto;
+    padding: 0.5rem 1rem;
+    align-self: center;
+  }
+}
  
+   #review-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* optional: adds a little depth */
+}

@@ -21,7 +21,7 @@
     <div class="hero-content col-md-6 d-flex flex-column align-items-md-center">
       <h1 class="text-center">Looking for your next read?</h1>
       <p class="text-center">Hi, I'm Rida — a lifelong book lover who’s been hooked on reading since childhood. I created this little space on the internet to showcase my current reads, past favourites and a few thoughts along the way. Dive in and see what's on my shelf!</p>
-      <a href="#" id="view-btn" class="btn btn-gradient mt-3">View my library</a>
+      <a href="/#library" id="view-btn" class="btn btn-gradient mt-3">View my library</a>
     </div>
     </header>
 
@@ -46,7 +46,7 @@
 
       <div class="row gx-5 justify-content-center">
         <% books.forEach(book => { %>
-          <div class="col-md-3 mb-4">
+          <div class="col-6 col-md-4 col-lg-3 mb-4">
             <div class="card h-100">
               <img 
                 src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-L.jpg" 
@@ -60,22 +60,21 @@
                 <% if (book.rating) { %>
                   <div class="book-rating">
                     <% for (let i = 0; i < book.rating; i++) { %>
-                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star star-filled"></i>
                     <% } %>
                     <% for (let i = book.rating; i < 5; i++) { %>
-                      <i class="far fa-star text-warning"></i>
+                      <i class="far fa-star star-empty"></i>
                     <% } %>
                   </div>
                 <% } %>
-                <% if (book.review) { %>
-                  <p class="card-text"><%= book.review %></p>
-                <% } %>
+                <a href="/reviews/<%= book.id %>" id="review-btn" class="btn d-md-inline-block w-md-auto fw-medium btn-sm mt-2">Read Review <img src="/images/bookvaulticon.png" alt="BookVault Icon" width="35" height="30" class="me-2"></a>
               </div>
             </div>
           </div>
         <% }); %>
       </div>
     </div>
+
 
  <script src="script.js"></script>
 </body>

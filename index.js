@@ -55,4 +55,24 @@ app.get("/", async (req, res) => {
   }
 });
 
+// Route to render reviews page 
+
+app.get("/reviews/:id", async (req, res) => {
+  const bookId = req.params.id;
+
+  try {
+    const result = await db.query("SELECT * FROM books WHERE id = $1", [bookId]);
+    const book = result.rows[0];
+
+    if (!book) {
+      return res.status(404).send("Book not found");
+    }
+
+    res.render("review.ejs", { book });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching book review");
+  }
+});
+
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
