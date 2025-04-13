@@ -40,16 +40,24 @@
           </ul>
 
            <!-- Search Bar - aligns right on large screens, stacked on small -->
-           <form class="d-flex search-form ms-lg-auto mt-2" role="search">
-             <!-- Input group for search icon inside the input field -->
-           <div class="input-group">
+           <form class="d-flex search-form ms-lg-auto mt-2 position-relative" role="search" id="search-form">
+           <div class="input-group position-relative w-100">
           <span class="input-group-text bg-transparent border-0">
           <i class="fas fa-search"></i>
           </span>
-            <input class="form-control me-2 search-input" type="search" placeholder="Search books..." aria-label="Search">
+            <input id="search-input"
+             class="form-control me-2 search-input"
+              type="search"
+               placeholder="Search books..." 
+               aria-label="Search" 
+               autocomplete="off"
+               >
+                 <!-- Suggestion Dropdown (inside the same input group) -->
+               <ul id="search-suggestions" class="list-group search-suggestions d-none"></ul>
             </div>
             <button class="btn search-btn" type="submit">Search</button>
-          </form>
+           </form>
+           
           </div>
       </div> <!-- End collapse -->
  

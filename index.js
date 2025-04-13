@@ -55,6 +55,30 @@ app.get("/", async (req, res) => {
   }
 });
 
+// Route to fetch book matches in search bar
+
+app.get('/search', async (req, res) => {
+  const searchTerm = req.query.q.toLowerCase();
+
+  try {
+    const result = await db.query(
+      `SELECT id, title, author, isbn FROM books 
+       WHERE LOWER(title) LIKE $1 
+       OR LOWER(author) LIKE $1`,
+      [`%${searchTerm}%`]
+    );
+
+    if (result.rows.length > 0) {
+      res.json(result.rows);
+    } else {
+      res.json([]);
+    }
+  } catch (err) {
+    console.error('Search error:', err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 // Route to render reviews page 
 
 app.get("/reviews/:id", async (req, res) => {

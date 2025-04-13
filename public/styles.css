@@ -34,7 +34,7 @@ body {
   /* Shift nav links to the right on larger screens */
 @media (min-width: 1220px) {
     .nav-links {
-      margin-left: 28rem !important; /* Adjust this value to your liking */
+      margin-left: 28rem !important; 
     }
   }
 
@@ -65,8 +65,73 @@ body {
   .search-btn:hover {
     background-color: #5c3775  !important; 
   }
+
+  /* Search dropdown menu */
   
-  /* Hero section */ 
+  .search-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    max-height: 220px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.2s ease-in-out;
+    border-radius: 0 0 8px 8px;
+  }
+  
+  .search-suggestion-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .search-suggestion-item:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .search-suggestion-img {
+    width: 40px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  /* Styling on scrollbar inside the search suggestions */
+#search-suggestions::-webkit-scrollbar {
+  width: 10px;
+}
+
+#search-suggestions::-webkit-scrollbar-track {
+  background: #f6e8c8; /* Light beige background for track */
+  border-radius: 8px;
+}
+
+#search-suggestions::-webkit-scrollbar-thumb {
+  background-color: #2c103e; /* Dark purple thumb */
+  border-radius: 8px;
+  border: 2px solid #f6e8c8; /* Adds padding around thumb */
+}
+
+/* hover effect */
+#search-suggestions::-webkit-scrollbar-thumb:hover {
+  background-color: #5c3775; /* Lighter purple on hover */
+}
+
+#search-suggestions .active {
+  background-color: #dacca2f1;
+  color: #2c103e;
+  font-weight: 400;
+}
+
+/* Hero section */ 
 
 
 .hero-image img {  /* Hero Image */
@@ -148,7 +213,7 @@ body {
   }
   
   .star-empty {
-    color: #ddd; /* soft gray for empty stars */
+    color: #ddd; /* soft grey for empty stars */
   }
 
 
@@ -173,7 +238,7 @@ body {
  
    #review-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* optional: adds a little depth */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* adds a little depth */
 }
 
 /* Review Page */
