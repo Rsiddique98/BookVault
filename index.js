@@ -55,6 +55,33 @@ app.get("/", async (req, res) => {
   }
 });
 
+
+// Route to render user book recommendations
+
+app.get('/suggestions', (req, res) => {
+  res.render('suggestions', { suggestion: null });
+});
+
+// POST suggestion form submission
+app.post('/suggestions', async (req, res) => {
+  const { title, author, reason, isbn } = req.body;
+
+  try {
+    const result = await db.query(
+      `INSERT INTO suggestions (title, author, reason, isbn)
+       VALUES ($1, $2, $3, $4) RETURNING *`,
+      [title, author, reason, isbn || null]
+    );
+
+    const newSuggestion = result.rows[0];
+    res.render('suggestions', { suggestion: newSuggestion });
+  } catch (err) {
+    console.error('Error saving suggestion:', err);
+    res.status(500).send('Error submitting suggestion');
+  }
+});
+
+
 // Route to fetch book matches in search bar
 
 app.get('/search', async (req, res) => {
