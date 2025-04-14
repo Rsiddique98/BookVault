@@ -19,7 +19,7 @@
      <img src="/images/animatedgirl2.png" alt="Girl reading book" class="img-fluid rounded">
     </div>
 
-    <form action="/suggestions" method="POST">
+    <form id="request-form" action="/suggestions" method="POST">
         <div class="mb-3">
           <label for="title" class="form-label">Book Title</label>
           <input type="text" class="form-control" id="title" name="title" required>
@@ -40,12 +40,15 @@
           <input type="text" class="form-control" id="isbn" name="isbn">
         </div>
     
-        <button type="submit" class="btn btn-dark">Submit Suggestion</button>
+        <div class="text-center mt-4 mb-5">
+          <button type="submit" id="suggestion-btn" class="btn btn-dark px-4 py-2">Submit Recommendation</button>
+        </div>
+        
       </form>
     
       <% if (suggestion) { %>
         <div class="mt-5 text-center">
-          <h4>Your Suggestion:</h4>
+          <h4>Successfully Submitted Your Recommendation:</h4>
           <p><strong><%= suggestion.title %></strong> by <%= suggestion.author %></p>
           <p><%= suggestion.reason %></p>
     
