@@ -63,6 +63,8 @@ app.get('/suggestions', (req, res) => {
 
 // POST suggestion form submission
 app.post('/suggestions', async (req, res) => {
+  console.log("Received suggestion:", req.body);
+  
   const { title, author, reason, isbn } = req.body;
 
   try {
