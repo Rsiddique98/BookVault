@@ -119,10 +119,51 @@ app.get("/reviews/:id", async (req, res) => {
       return res.status(404).send("Book not found");
     }
 
-    res.render("review.ejs", { book });
+       // 2. Fetch extra info from Open Library using ISBN
+       let bookDetails = null;
+
+       if (book.isbn) {
+         const response = await axios.get("https://openlibrary.org/api/books", {
+           params: {
+             bibkeys: `ISBN:${book.isbn}`,
+             format: "json",
+             jscmd: "data"
+           }
+         });
+   
+         bookDetails = response.data[`ISBN:${book.isbn}`] || null;
+       }
+
+    res.render("review.ejs", { book, bookDetails });
   } catch (err) {
-    console.error(err);
+    console.error("Error in reviews route:", err);
     res.status(500).send("Error fetching book review");
+  }
+});
+
+// Route to fetch detailed book info by ISBN using Axios
+app.get("/book-info/:isbn", async (req, res) => {
+  const { isbn } = req.params;
+
+  try {
+    const response = await axios.get("https://openlibrary.org/api/books", {
+      params: {
+        bibkeys: `ISBN:${isbn}`,
+        format: "json",
+        jscmd: "data"
+      }
+    });
+
+    const bookData = response.data[`ISBN:${isbn}`];
+
+    if (bookData) {
+      res.json(bookData);
+    } else {
+      res.status(404).json({ error: "Book not found" });
+    }
+  } catch (err) {
+    console.error("Axios error fetching book data:", err);
+    res.status(500).json({ error: "Server error while fetching book info" });
   }
 });
 
